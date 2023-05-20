@@ -14,6 +14,7 @@ struct SegmentedControlElement: View {
     @State var buttontitle: String = "ASC"
 
     var body: some View {
+        historyView
         pickerView
         ScrollView {
             if viewModel.selectedSegment == 0 {
@@ -28,6 +29,14 @@ struct SegmentedControlElement: View {
                     .onAppear {
                         textFieldViewModel.setTop10Sort()
                     }
+            }
+        }
+    }
+    
+    fileprivate var historyView: some View {
+        List {
+            ForEach(textFieldViewModel.suffixHistory) { suffix in
+                Text(suffix.word)
             }
         }
     }
@@ -63,6 +72,8 @@ struct SegmentedControlElement: View {
 struct SegmentedControlElement_Previews: PreviewProvider {
     static var previews: some View {
         SegmentedControlElement()
+            .environmentObject(SegmentedViewModel())
+            .environmentObject(TextFieldElementViewModel())
     }
 }
 

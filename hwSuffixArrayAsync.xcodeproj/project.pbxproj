@@ -17,6 +17,7 @@
 		18A1E9E52A18FB92004C77C5 /* SegmentedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1E9E42A18FB92004C77C5 /* SegmentedViewModel.swift */; };
 		18A1E9E82A18FBBC004C77C5 /* TextFieldElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1E9E72A18FBBC004C77C5 /* TextFieldElement.swift */; };
 		18A1E9EA2A18FBD5004C77C5 /* TextFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1E9E92A18FBD5004C77C5 /* TextFieldViewModel.swift */; };
+		18A1E9F02A1910FC004C77C5 /* JobQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1E9EF2A1910FC004C77C5 /* JobQueue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		18A1E9E42A18FB92004C77C5 /* SegmentedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedViewModel.swift; sourceTree = "<group>"; };
 		18A1E9E72A18FBBC004C77C5 /* TextFieldElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldElement.swift; sourceTree = "<group>"; };
 		18A1E9E92A18FBD5004C77C5 /* TextFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewModel.swift; sourceTree = "<group>"; };
+		18A1E9EF2A1910FC004C77C5 /* JobQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobQueue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		18A1E9CD2A18FABB004C77C5 /* hwSuffixArrayAsync */ = {
 			isa = PBXGroup;
 			children = (
+				18A1E9F12A191123004C77C5 /* jobQueue */,
 				18A1E9DC2A18FAF3004C77C5 /* suffixArray */,
 				18A1E9E32A18FB70004C77C5 /* segmentedControl */,
 				18A1E9E62A18FBA4004C77C5 /* textField */,
@@ -115,6 +118,14 @@
 				18A1E9CE2A18FABB004C77C5 /* hwSuffixArrayAsyncApp.swift */,
 			);
 			path = app;
+			sourceTree = "<group>";
+		};
+		18A1E9F12A191123004C77C5 /* jobQueue */ = {
+			isa = PBXGroup;
+			children = (
+				18A1E9EF2A1910FC004C77C5 /* JobQueue.swift */,
+			);
+			path = jobQueue;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +206,7 @@
 				18A1E9E52A18FB92004C77C5 /* SegmentedViewModel.swift in Sources */,
 				18A1E9DE2A18FB0E004C77C5 /* SuffixArray.swift in Sources */,
 				18A1E9E22A18FB60004C77C5 /* SegmentedControlElement.swift in Sources */,
+				18A1E9F02A1910FC004C77C5 /* JobQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

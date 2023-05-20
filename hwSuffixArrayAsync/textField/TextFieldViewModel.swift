@@ -9,15 +9,21 @@ import Foundation
 
 protocol TextFieldElementViewModelProtocol {
     var suffixCountSorted: String { get set }
+    var suffixHistory: [SuffixHistory] { get set }
     var makeReversed: Bool { get set }
+    func fillHistory(text: String)
     func countSuffixesFrom(text: String)
 }
 
 final class TextFieldElementViewModel: ObservableObject {
     @Published var suffixCountSorted = ""
+    @Published var suffixHistory = [SuffixHistory]()
+
+    private let jobQueue = JobQueue(concurrency: 5)
+    private var suffixes = [SuffixInfo]()
+
     private var sortMode: SortMode = .alphabetically
     private var sortType: SortType = .asc
-    private var suffixes = [SuffixInfo]()
     
     enum SortMode {
         case alphabetically
@@ -32,24 +38,35 @@ final class TextFieldElementViewModel: ObservableObject {
     struct SuffixInfo {
         let word: String
         let count: Int
+        let time: UInt64
     }
 
-    func countSuffixesFrom(text: String) {
+    @MainActor
+    func countSuffixesFrom(text: String) async {
         let words = text
             .split(separator: " ")
             .map { String($0) }
-        
-        let suffixCount = words
-            .flatMap { SuffixSequence(word: $0) }
-            .filter { $0.count >= 3 }
-            .reduce([String: Int](), { suffixCount, suffix in
-                var suffixCount = suffixCount
-                suffixCount[suffix] = (suffixCount[suffix] ?? 0) + 1
-                return suffixCount
-            })
-        
-        suffixes = suffixCount
-            .map { SuffixInfo(word: $0.key, count: $0.value) }
+
+        let startTime = DispatchTime.now().uptimeNanoseconds
+
+        suffixes = try! await withThrowingTaskGroup(of: [String: Int].self, returning: [SuffixInfo].self) { taskGroup in
+            for word in words {
+                taskGroup.addTask {
+                    let result = try! await self.jobQueue.enqueue(operation: { TextFieldElementViewModel.makeStatistic(word) })
+                    return result
+                }
+            }
+            
+            var result = [String: Int]()
+            for try await task in taskGroup {
+                result.merge(task, uniquingKeysWith: { l, r in
+                    l + r
+                })
+            }
+            let endTime = DispatchTime.now().uptimeNanoseconds
+
+            return result.map { SuffixInfo(word: $0.key, count: $0.value, time: (endTime - startTime)) }
+        }
         
         switch sortMode {
             case .alphabetically:
@@ -59,6 +76,26 @@ final class TextFieldElementViewModel: ObservableObject {
         }
     }
     
+    static func makeStatistic(_ text: String) -> [String: Int] {
+        let words = text
+            .split(separator: " ")
+            .map { String($0) }
+        let suffixCount = words
+            .flatMap { SuffixSequence(word: $0) }
+            .filter { $0.count >= 3 }
+            .reduce([String: Int](), { suffixCount, suffix in
+                var suffixCount = suffixCount
+                suffixCount[suffix] = (suffixCount[suffix] ?? 0) + 1
+                return suffixCount
+            })
+
+        return suffixCount
+    }
+
+    func fillHistory(text: String) {
+        suffixHistory.append(.init(word: text))
+    }
+
     func setAlphabeticalSort(type: SortType) {
         sortMode = .alphabetically
         sortType = type
@@ -97,7 +134,15 @@ final class TextFieldElementViewModel: ObservableObject {
 
     private func combineSuffixSorted(suffixes: [SuffixInfo]) {
         suffixCountSorted = suffixes.reduce("", { res, info in
-            info.count > 1 ? res + "\(info.word) – \(info.count)\n" : res + "\(info.word)\n"
+            info.count > 1 ? res + "\(info.word) – \(info.count)        |        \(info.time) нс\n" : res + "\(info.word)         |        \(info.time) нс\n"
         })
+    }
+}
+
+final class SuffixHistory: Identifiable {
+    var word: String
+    
+    init(word: String) {
+        self.word = word
     }
 }

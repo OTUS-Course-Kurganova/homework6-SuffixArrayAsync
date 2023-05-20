@@ -15,7 +15,10 @@ struct TextFieldElement: View {
         InputedField
             .lineLimit(100)
             .onSubmit {
-                viewModel.countSuffixesFrom(text: inputedWord)
+                viewModel.fillHistory(text: inputedWord)
+                Task {
+                    try await viewModel.countSuffixesFrom(text: inputedWord)
+                }
             }
         SegmentedControlElement()
             .padding(.top, 5)
