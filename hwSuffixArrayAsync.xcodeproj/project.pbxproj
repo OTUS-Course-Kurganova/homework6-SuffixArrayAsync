@@ -11,6 +11,12 @@
 		18A1E9D12A18FABB004C77C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1E9D02A18FABB004C77C5 /* ContentView.swift */; };
 		18A1E9D32A18FABC004C77C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A1E9D22A18FABC004C77C5 /* Assets.xcassets */; };
 		18A1E9D62A18FABC004C77C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A1E9D52A18FABC004C77C5 /* Preview Assets.xcassets */; };
+		18A1E9DE2A18FB0E004C77C5 /* SuffixArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1E9DD2A18FB0E004C77C5 /* SuffixArray.swift */; };
+		18A1E9E02A18FB2F004C77C5 /* SuffixIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1E9DF2A18FB2F004C77C5 /* SuffixIterator.swift */; };
+		18A1E9E22A18FB60004C77C5 /* SegmentedControlElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1E9E12A18FB60004C77C5 /* SegmentedControlElement.swift */; };
+		18A1E9E52A18FB92004C77C5 /* SegmentedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1E9E42A18FB92004C77C5 /* SegmentedViewModel.swift */; };
+		18A1E9E82A18FBBC004C77C5 /* TextFieldElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1E9E72A18FBBC004C77C5 /* TextFieldElement.swift */; };
+		18A1E9EA2A18FBD5004C77C5 /* TextFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1E9E92A18FBD5004C77C5 /* TextFieldViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		18A1E9D02A18FABB004C77C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		18A1E9D22A18FABC004C77C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18A1E9D52A18FABC004C77C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		18A1E9DD2A18FB0E004C77C5 /* SuffixArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuffixArray.swift; sourceTree = "<group>"; };
+		18A1E9DF2A18FB2F004C77C5 /* SuffixIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuffixIterator.swift; sourceTree = "<group>"; };
+		18A1E9E12A18FB60004C77C5 /* SegmentedControlElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlElement.swift; sourceTree = "<group>"; };
+		18A1E9E42A18FB92004C77C5 /* SegmentedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedViewModel.swift; sourceTree = "<group>"; };
+		18A1E9E72A18FBBC004C77C5 /* TextFieldElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldElement.swift; sourceTree = "<group>"; };
+		18A1E9E92A18FBD5004C77C5 /* TextFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +63,10 @@
 		18A1E9CD2A18FABB004C77C5 /* hwSuffixArrayAsync */ = {
 			isa = PBXGroup;
 			children = (
-				18A1E9CE2A18FABB004C77C5 /* hwSuffixArrayAsyncApp.swift */,
-				18A1E9D02A18FABB004C77C5 /* ContentView.swift */,
+				18A1E9DC2A18FAF3004C77C5 /* suffixArray */,
+				18A1E9E32A18FB70004C77C5 /* segmentedControl */,
+				18A1E9E62A18FBA4004C77C5 /* textField */,
+				18A1E9EB2A18FBE5004C77C5 /* app */,
 				18A1E9D22A18FABC004C77C5 /* Assets.xcassets */,
 				18A1E9D42A18FABC004C77C5 /* Preview Content */,
 			);
@@ -65,6 +79,42 @@
 				18A1E9D52A18FABC004C77C5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		18A1E9DC2A18FAF3004C77C5 /* suffixArray */ = {
+			isa = PBXGroup;
+			children = (
+				18A1E9DD2A18FB0E004C77C5 /* SuffixArray.swift */,
+				18A1E9DF2A18FB2F004C77C5 /* SuffixIterator.swift */,
+			);
+			path = suffixArray;
+			sourceTree = "<group>";
+		};
+		18A1E9E32A18FB70004C77C5 /* segmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				18A1E9E12A18FB60004C77C5 /* SegmentedControlElement.swift */,
+				18A1E9E42A18FB92004C77C5 /* SegmentedViewModel.swift */,
+			);
+			path = segmentedControl;
+			sourceTree = "<group>";
+		};
+		18A1E9E62A18FBA4004C77C5 /* textField */ = {
+			isa = PBXGroup;
+			children = (
+				18A1E9E72A18FBBC004C77C5 /* TextFieldElement.swift */,
+				18A1E9E92A18FBD5004C77C5 /* TextFieldViewModel.swift */,
+			);
+			path = textField;
+			sourceTree = "<group>";
+		};
+		18A1E9EB2A18FBE5004C77C5 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				18A1E9D02A18FABB004C77C5 /* ContentView.swift */,
+				18A1E9CE2A18FABB004C77C5 /* hwSuffixArrayAsyncApp.swift */,
+			);
+			path = app;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +187,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A1E9EA2A18FBD5004C77C5 /* TextFieldViewModel.swift in Sources */,
 				18A1E9D12A18FABB004C77C5 /* ContentView.swift in Sources */,
 				18A1E9CF2A18FABB004C77C5 /* hwSuffixArrayAsyncApp.swift in Sources */,
+				18A1E9E02A18FB2F004C77C5 /* SuffixIterator.swift in Sources */,
+				18A1E9E82A18FBBC004C77C5 /* TextFieldElement.swift in Sources */,
+				18A1E9E52A18FB92004C77C5 /* SegmentedViewModel.swift in Sources */,
+				18A1E9DE2A18FB0E004C77C5 /* SuffixArray.swift in Sources */,
+				18A1E9E22A18FB60004C77C5 /* SegmentedControlElement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

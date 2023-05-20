@@ -12,6 +12,8 @@ struct hwSuffixArrayAsyncApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(TextFieldElementViewModel())
+                .environmentObject(SegmentedViewModel())
         }
     }
 }
